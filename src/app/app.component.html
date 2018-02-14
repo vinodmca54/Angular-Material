@@ -4,11 +4,11 @@
     Welcome to {{ title }}!
   </h1>
  </div>
- <mat-checkbox (click)="onclick(condition)">Check me!</mat-checkbox>
+ <mat-checkbox [labelPosition]="chkLabelPosition" (click)="onclick(condition)">Check me!</mat-checkbox>
 <div *ngIf="condition">
     <h1>Welome to Angular meterial</h1>
 </div><br><br>
-
+<mat-checkbox [(indeterminate)]="isIndeterminate">indeterminate test</mat-checkbox>
 <mat-radio-group value='1'>
     <mat-radio-button value="1">Male</mat-radio-button>
     <mat-radio-button value="2">Female</mat-radio-button>
@@ -21,6 +21,10 @@
       </mat-option>
     </mat-select>
 </mat-form-field><br><br>
+ <mat-form-field>
+    <input type="text"  matInput>
+    <mat-placeholder>hello</mat-placeholder>
+  </mat-form-field>
 
 <mat-form-field>
     <input matInput [matDatepicker]="picker" placeholder="Choose a date">
@@ -43,8 +47,19 @@
         </mat-select>
       </mat-form-field>
     </div>
-
   <br>
+<!--Auto complete-->
+   <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<!--auto complete end-->
   <mat-card>
       <mat-card-content>
         <h2 class="example-h2">Slider configuration</h2>
